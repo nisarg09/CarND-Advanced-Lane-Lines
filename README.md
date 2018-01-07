@@ -118,7 +118,7 @@ Below is an example of the results of the draw_data function, which writes text 
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./project_video_output.mp4)
 
 ---
 
@@ -129,9 +129,7 @@ Here's a [link to my video result](./project_video.mp4)
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further. The problems I encountered were almost exclusively due to lighting conditions, shadwos, discoloration, etc. It wasn't difficult to dian n threshold parameters to get the pipeline to perform well on the original project video, even on lighter-gray bridge sections that comprised the most difficult sections of the video. The lane lines don't necessarily occupy the same pixel value (speaking of the L channel of the HLS color space) range on this video that they occupy on the first video, so the normalization/scaling technique helped here quite a bit, although it also tended to create problems (large noisy areas activated in the binary image) when the white lines didn't contrast with the rest of the image enough. My approach also invalidates fits if the left and right base points aren't a certain distance apart (within some tolerance) under the assumption that the lane width will remain relatively constant.
 I've considered a few possible approaches for making my algorithm more robust. These include more dynamic thresholding (perhaps considering separate threshold parameters for different horizontal slices of the image, or dynamically selecting threshold parameters based on the resulting number of activated pixels), designating a confidence level for fits and rejecting new fits that deviate beyond a certain amount (this is already implemented in a relatively unsophisticated way) or rejecting the right fit (for example) if the confidence in the left fit is high and right fit deviates too much (enforcing roughly parallel fits). I hope to revisit some of these strategies in the future.
 
-[link to output result](./output1.mp4)
+[link to output result](./project_video_output.mp4)
 
 [link to challange result](./challenge_video_output.mp4)
-
-[link to hard challenge result](./harder_challenge_video.mp4)
 
